@@ -3,6 +3,7 @@ package com.example.graphql.web;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import graphql.ExecutionInput;
+import graphql.ExecutionResult;
 import graphql.GraphQL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -76,6 +77,7 @@ public class GraphQLController {
                 .operationName(operationName)
                 .build();
 
-        return graphql.execute(executionInput).toSpecification();
+        ExecutionResult result = graphql.execute(executionInput);
+        return result.toSpecification();
     }
 }

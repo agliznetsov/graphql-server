@@ -35,10 +35,7 @@ public class GraphQLProvider {
         URL url = Resources.getResource("starwars.graphqls");
         String sdl = Resources.toString(url, Charsets.UTF_8);
         GraphQLSchema graphQLSchema = buildSchema(sdl);
-
-        Instrumentation instrumentation = new TracingInstrumentation();
-
-        this.graphQL = GraphQL.newGraphQL(graphQLSchema).instrumentation(instrumentation).build();
+        this.graphQL = GraphQL.newGraphQL(graphQLSchema).build();
     }
 
     private GraphQLSchema buildSchema(String sdl) {
