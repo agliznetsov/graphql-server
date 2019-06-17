@@ -1,11 +1,11 @@
-INSERT INTO FILM_CHARACTER (DTYPE, ID, NAME, HOME_PLANET, PRIMARY_FUNCTION) VALUES
-    ('Human', 1000, 'Luke Skywalker', 'Tatooine', null),
-    ('Human', 1001, 'Darth Vader', 'Tatooine', null),
-    ('Human', 1002, 'Han Solo', null, null),
-    ('Human', 1003, 'Leia Organa', 'Alderaan', null),
-    ('Human', 1004, 'Wilhuff Tarkin', null, null),
-    ('Droid', 2000, 'C-3PO', null, 'Protocol'),
-    ('Droid', 2001, 'R2-D2', null, 'Astromech');
+INSERT INTO FILM_CHARACTER (CHARACTER_TYPE, ID, NAME, HOME_PLANET) VALUES
+    ('HUMAN', 1000, 'Luke Skywalker', 'Tatooine'),
+    ('HUMAN', 1001, 'Darth Vader', 'Tatooine'),
+    ('HUMAN', 1002, 'Han Solo', null),
+    ('HUMAN', 1003, 'Leia Organa', 'Alderaan'),
+    ('HUMAN', 1004, 'Wilhuff Tarkin', null),
+    ('DROID', 2000, 'C-3PO', null),
+    ('DROID', 2001, 'R2-D2', null);
 
 INSERT INTO CHARACTER_FRIEND (CHARACTER_ID, FRIEND_ID) VALUES
     (1000, 1002),

@@ -15,14 +15,21 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import java.util.Set;
 
+import lombok.Data;
+
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public abstract class FilmCharacter {
+@Data
+public class FilmCharacter {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String name;
+
+    @Enumerated(EnumType.STRING)
+    private CharacterType characterType;
+
+    private String homePlanet;
 
     /**
      * Eagerly fetches a list of friends ids.
@@ -39,35 +46,4 @@ public abstract class FilmCharacter {
     @Column(name = "episode")
     private Set<Episode> appearsIn;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Set<Episode> getAppearsIn() {
-        return appearsIn;
-    }
-
-    public void setAppearsIn(Set<Episode> appearsIn) {
-        this.appearsIn = appearsIn;
-    }
-
-    public Set<Long> getFriendsIds() {
-        return friendsIds;
-    }
-
-    public void setFriendsIds(Set<Long> friendsIds) {
-        this.friendsIds = friendsIds;
-    }
 }

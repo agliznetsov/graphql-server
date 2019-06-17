@@ -25,10 +25,18 @@ public class WebTest {
 
 	@Test
 	public void queryById() throws Exception {
-		mvc.perform(post(ENDPOINT).content("{\"query\":\"{ human(id: 1000) { name }}\"}").contentType(MediaType.APPLICATION_JSON))
+		mvc.perform(post(ENDPOINT).content("{\"query\":\"{ character(id: 1000) { name }}\"}").contentType(MediaType.APPLICATION_JSON))
 				.andDo(print())
 				.andExpect(status().isOk())
-				.andExpect(content().json("{'data': {'human':{'name':'Luke Skywalker'}}}", true));
+				.andExpect(content().json("{'data': {'character':{'name':'Luke Skywalker'}}}", true));
+	}
+
+	@Test
+	public void queryByIdWithFriends() throws Exception {
+		mvc.perform(post(ENDPOINT).content("{\"query\":\"{ character(id: 1000) { name, friends(limit: 1) { name } }}\"}").contentType(MediaType.APPLICATION_JSON))
+				.andDo(print())
+				.andExpect(status().isOk())
+				.andExpect(content().json("{'data':{'character':{'name':'Luke Skywalker','friends':[{'name':'Han Solo'}]}}}", true));
 	}
 
 	@Test
